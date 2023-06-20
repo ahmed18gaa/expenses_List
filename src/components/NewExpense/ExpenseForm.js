@@ -1,50 +1,43 @@
 import React, { useState } from "react";
+
 import "./ExpenseForm.css";
+
 const ExpenseForm = (props) => {
-  // [1] Method
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
-
-  // [2] Method
   // const [userInput, setUserInput] = useState({
-  //   enteredTitle: "",
-  //   enteredAmount: "",
-  //   enteredDate: "",
+  //   enteredTitle: '',
+  //   enteredAmount: '',
+  //   enteredDate: '',
   // });
 
   const titleChangeHandler = (event) => {
-    // [1] Method
     setEnteredTitle(event.target.value);
-    // [2] Method
     // setUserInput({
     //   ...userInput,
     //   enteredTitle: event.target.value,
     // });
-    // [3] Method
     // setUserInput((prevState) => {
     //   return { ...prevState, enteredTitle: event.target.value };
     // });
   };
+
   const amountChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
-  };
-  const dateChangeHandler = (event) => {
-    setEnteredDate(event.target.value);
+    // setUserInput({
+    //   ...userInput,
+    //   enteredAmount: event.target.value,
+    // });
   };
 
-  // const inputChangeHandler = (identifier, value) => {
-  //   if (identifier === "title") {
-  //     setEnteredTitle(value);
-  //   } else if (identifier === "date") {
-  //     setEnteredDate(value);
-  //   } else {
-  //     setEnteredDate(value);
-  //   }
-  // };
-  // onChange={(event) =>
-  //   inputChangeHandler("title", event.target.value)
-  // }
+  const dateChangeHandler = (event) => {
+    setEnteredDate(event.target.value);
+    // setUserInput({
+    //   ...userInput,
+    //   enteredDate: event.target.value,
+    // });
+  };
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -54,6 +47,7 @@ const ExpenseForm = (props) => {
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
+
     props.onSaveExpenseData(expenseData);
     setEnteredTitle("");
     setEnteredAmount("");
